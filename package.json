@@ -1,5 +1,5 @@
 {
-  "name": "react-native-material-switch",
+  "name": "@mrpatiwi/react-native-switch",
   "version": "0.0.4",
   "description": "Customizable material style switch",
   "main": "index.js",
