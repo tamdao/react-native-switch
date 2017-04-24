@@ -173,7 +173,7 @@ var MaterialSwitch = React.createClass({
     Animated.timing(
       this.state.position,
       {
-        toValue: this.state.width - this.props.buttonOffset,
+        toValue: this.state.width - this.props.buttonOffset*2,
         duration: this.props.switchAnimationTime,
         useNativeDriver: true,
       }
