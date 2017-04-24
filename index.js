@@ -22,6 +22,7 @@ var MaterialSwitch = React.createClass({
     activeBackgroundColor: React.PropTypes.string,
     inactiveBackgroundColor: React.PropTypes.string,
     buttonRadius: React.PropTypes.number,
+    buttonOffset: React.PropTypes.number,
     switchWidth: React.PropTypes.number,
     switchHeight: React.PropTypes.number,
     buttonContent: React.PropTypes.element,
@@ -50,6 +51,7 @@ var MaterialSwitch = React.createClass({
       activeBackgroundColor: 'rgba(255,255,255,.5)',
       inactiveBackgroundColor: 'rgba(0,0,0,.5)',
       buttonRadius: 15,
+      buttonOffset: 0,
       switchWidth: 40,
       switchHeight: 20,
       buttonContent: null,
@@ -171,7 +173,7 @@ var MaterialSwitch = React.createClass({
     Animated.timing(
       this.state.position,
       {
-        toValue: this.state.width,
+        toValue: this.state.width - this.props.buttonOffset,
         duration: this.props.switchAnimationTime,
         useNativeDriver: true,
       }
@@ -230,6 +232,7 @@ var MaterialSwitch = React.createClass({
         style={{padding: this.padding, position: 'relative'}}>
         <View
           style={{
+            ...this.props.style,
             backgroundColor: this.state.state ? this.props.activeBackgroundColor : this.props.inactiveBackgroundColor,
             height: this.props.switchHeight,
             width: this.props.switchWidth,
@@ -255,7 +258,7 @@ var MaterialSwitch = React.createClass({
               flexDirection: 'row',
               position: 'absolute',
               top: halfPadding + this.props.switchHeight/2 - this.props.buttonRadius,
-              left: this.props.switchHeight/2 > this.props.buttonRadius ? halfPadding : halfPadding + this.props.switchHeight/2 - this.props.buttonRadius,
+              left: (this.props.switchHeight/2 > this.props.buttonRadius ? halfPadding : halfPadding + this.props.switchHeight/2 - this.props.buttonRadius) + this.props.buttonOffset,
               transform: [{ translateX: this.state.position }]
             },
             this.props.buttonShadow]}
