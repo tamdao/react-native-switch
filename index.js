@@ -68,7 +68,7 @@ var MaterialSwitch = React.createClass({
     return {
       width: w,
       state: this.props.active,
-      position: new Animated.Value(this.props.active? w : 0),
+      position: new Animated.Value(this.props.active? w - this.props.buttonOffset*2 : 0),
     };
   },
 
